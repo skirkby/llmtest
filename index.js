@@ -1,6 +1,6 @@
 import dotenv from "dotenv";
 dotenv.config();
-//test
+
 import server from "./api/server.js";
 
 const port = process.env.PORT || 5000;
