@@ -1,0 +1,21 @@
+{
+    "domain":"HR Benefits Administration",
+    "companyName":"Acme HR Benefits, Inc.",
+    "agentName":"Jose",
+    "agentTemperature":"5",
+    "callerName":"Sarah Johnson",
+    "callerObjective1":"Learn about 529 eductional savings plans",
+    "callerObjective2":"Know how to switch 401k providers",
+    "callerObjective3":"Answer question about health savings accounts",
+    "callerTemperature":"5",
+    "callerDisposition":"Nuetral",
+    "callerDomainSkill":"3",
+    "supportingNeed1":"Know how to contact her 401k provider",
+    "supportingNeed2":"know limits to contributing to a 529 plan",
+    "supportingNeed3":"know rules about using HSA funds for medical expenses",
+    "supportingNeed4":"",
+    "callLengthMin":"7",
+    "agentDomination":"5",
+    "utteranceDetectionLow": "3",
+    "utteranceDetectionHigh": "10"
+}

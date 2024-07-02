@@ -1,0 +1,21 @@
+{
+    "domain":"Auto Parts Dealer",
+    "companyName":"Acme Auto Parts Salvage, Inc.",
+    "agentName":"Jose",
+    "agentTemperature":"5",
+    "callerName":"Sarah Johnson",
+    "callerObjective1":"find a transmission for a 2005 Ford F150",
+    "callerObjective2":"get a quote for a replacement gas tank for a 2003 Honda Civic",
+    "callerObjective3":"find out who they would recommend for a new windshield for a 2007 Toyota Camry",
+    "callerTemperature":"5",
+    "callerDisposition":"Nuetral",
+    "callerDomainSkill":"3",
+    "supportingNeed1":"financing options for a new transmission",
+    "supportingNeed2":"warranty information for a replacement gas tank",
+    "supportingNeed3":"find repair shops for foreign cars in the area",
+    "supportingNeed4":"",
+    "callLengthMin":"7",
+    "agentDomination":"5",
+    "utteranceDetectionLow": "3",
+    "utteranceDetectionHigh": "5"
+}
