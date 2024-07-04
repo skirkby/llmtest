@@ -4,7 +4,7 @@ tl;dr
 - create an api key for your OpenAI account, and save it to OPENAI_API_KEY environment variable in .env. (See https://platform.openai.com/api-keys)
 - enable all the models for the us-east-1 region in Bedrock (see https://us-east-1.console.aws.amazon.com/bedrock, open the left panel, and choose "Model Access" at the bottom)
 - set us-east-1 as your default AWS region for Bedrock models in the AWS_DEFAULT_REGION environment variable in .env.
-- optionally change the default listen port for the app from 5000 with a PORT environment variable in .env (PORT=<yourPort>
+- optionally change the default listen port for the app from 5000 with a PORT environment variable in .env (PORT=<yourPort>)
 - run the app, and send a GET http://localhost:5000/list request to see the model names that are supported
 - send a POST http://localhost:5000/openai/<modelName> or POST http://localhost:5000/bedrock/<modelName> request to test the model
 - be sure to include a JSON body with one or more "message" in a "messages" array:
