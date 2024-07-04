@@ -19,10 +19,12 @@ tl;dr
   ]
 }
 
+```
 - message roles can be "user", "assistant", or "system". User messages are past prompts you have sent in (plus the new one you are adding).  Assistant messages are responses the model has sent back in the past.  And System messages are instructions to the model about how to generate a response (i.e. "always respond in the voice of a pirate")
 - content is typically just a string.  You will need to figure out how to format/encode it in the tool you are sending it from - Postman, API Dog, etc. - especially for multi-line "contents".
 - The following models are current supported (July 2024):
 
+```json
 {
     "openai": [
         "GPT_4O",
@@ -43,6 +45,7 @@ tl;dr
     ]
 }
 
+```
 - so requests can go to http://localhost:5000/openai/GPT_4O, or http://localhost:5000/bedrock/CLAUDE_35_SONNET, etc.  Case matters.
 
 details
