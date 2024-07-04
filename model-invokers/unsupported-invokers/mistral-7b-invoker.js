@@ -3,9 +3,9 @@
 
 import { fileURLToPath } from "url";
 
-import { FoundationModels } from "../foundation_models.js";
+import { BedrockModels } from "./model-identifiers.js";
 import { InvokeModelCommand } from "@aws-sdk/client-bedrock-runtime";
-import createBedrockClient from "../bedrock-runtime-client-factory.js";
+import createBedrockClient from "./bedrock-runtime-client-factory.js";
 
 /**
  * @typedef {Object} Output
@@ -23,7 +23,7 @@ import createBedrockClient from "../bedrock-runtime-client-factory.js";
  */
 const invokeModel = async (
     prompt,
-    modelId = FoundationModels.MISTRAL_7B.modelId,
+    modelId = BedrockModels.MISTRAL_7B.modelId,
 ) => {
 
 

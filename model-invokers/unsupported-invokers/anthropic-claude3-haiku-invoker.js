@@ -1,33 +1,18 @@
+// TODO: refactor claud3-haiku-invoker.js to use shared id's
+// TODO: duplicate claude3 haiku invoker for other claude3 models
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
 import { fileURLToPath } from "url";
 
-import { FoundationModels } from "../../config/foundation_models.js";
+import { BedrockModels } from "../model-identifiers.js";
 import {
   BedrockRuntimeClient,
   InvokeModelCommand,
   InvokeModelWithResponseStreamCommand,
 } from "@aws-sdk/client-bedrock-runtime";
 
-/**
- * @typedef {Object} ResponseContent
- * @property {string} text
- *
- * @typedef {Object} MessagesResponseBody
- * @property {ResponseContent[]} content
- *
- * @typedef {Object} Delta
- * @property {string} text
- *
- * @typedef {Object} Message
- * @property {string} role
- *
- * @typedef {Object} Chunk
- * @property {string} type
- * @property {Delta} delta
- * @property {Message} message
- */
+
 
 /**
  * Invokes Anthropic Claude 3 using the Messages API.
@@ -83,7 +68,7 @@ export const invokeModel = async (
  */
 export const invokeModelWithResponseStream = async (
   prompt,
-  modelId = "anthropic.claude-3-haiku-20240307-v1:0",
+  modelId = BedrockModels.CLAUDE_3_HAIKU.modelId,
 ) => {
   // Create a new Bedrock Runtime client instance.
   const client = new BedrockRuntimeClient({ region: "us-east-1" });
@@ -130,7 +115,7 @@ export const invokeModelWithResponseStream = async (
 // Invoke the function if this file was run directly.
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const prompt = 'Write a paragraph starting with: "Once upon a time..."';
-  const modelId = FoundationModels.CLAUDE_3_HAIKU.modelId;
+  const modelId = BedrockModels.CLAUDE_3_HAIKU.modelId;
   console.log(`Prompt: ${prompt}`);
   console.log(`Model ID: ${modelId}`);
 

@@ -3,26 +3,14 @@
 
 import { fileURLToPath } from "url";
 
-import { FoundationModels } from "../../config/foundation_models.js";
+import { BedrockModels } from "../model-identifiers.js";
 import {
   BedrockRuntimeClient,
   InvokeModelCommand,
 } from "@aws-sdk/client-bedrock-runtime";
+import { createBedrockClient } from "../bedrock-runtime-client-factory.js";
 
-/**
- * @typedef {Object} ResponseContent
- * @property {string} text
- */
 
-/**
- * @typedef {Object} MessagesResponseBody
- * @property {ResponseContent[]} content
- */
-
-/**
- * @typedef {Object} TextCompletionsResponseBody
- * @property {completion} text
- */
 
 /**
  * Invokes Anthropic Claude 2.x using the Messages API.
@@ -30,12 +18,10 @@ import {
  * To learn more about the Anthropic Messages API, go to:
  * https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters-anthropic-claude-messages.html
  *
- * @param {string} prompt - The input text prompt for the model to complete.
- * @param {string} [modelId] - The ID of the model to use. Defaults to "anthropic.claude-v2".
  */
-export const invokeModel = async (prompt, modelId = "anthropic.claude-v2") => {
+export const invokeModel = async (prompt, modelId = BedrockModels.CLAUDE_2) => {
   // Create a new Bedrock Runtime client instance.
-  const client = new BedrockRuntimeClient({ region: "us-east-1" });
+  const client = createBedrockClient();
 
   // Prepare the payload for the Messages API request.
   const payload = {

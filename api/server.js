@@ -2,19 +2,35 @@ import express from "express";
 //import helmet from "helmet";
 //import cors from "corse";
 
-import mixtral8x7bRouter from "./bedrock/mixtral8x7b-router.js";
-import mistral7bRouter from "./bedrock/mistral7b-router.js";
-import openairouter from "./openai/openai-router.js";
+// import claudeRouter from "./bedrock-claude-router.js";
+// import mistralRouter from "./bedrock-mistral-router.js";
+
+import openaiRouter from "./openai-router.js";
+import bedrockRouter from "./bedrock-router.js";
+import { BedrockModels, OpenAIModels } from "../model-invokers/model-configs.js";
+// TODO: add express routers for all models
 
 const server = express();
 
 server.use(express.json());
-server.use("/bedrock/mixtral8x7b", mixtral8x7bRouter);
-server.use("/bedrock/mistral7b", mistral7bRouter);``
-server.use("/openai", openairouter);
+server.use("/bedrock", bedrockRouter);
+server.use("/openai", openaiRouter);
 
 server.get("/", (req, res) => {
   res.json({ api: "up" });
+});
+
+server.get("/list", (req, res) => {
+  const openAiKeys = Object.keys(OpenAIModels);
+  const bedrockKeys = Object.keys(BedrockModels);
+
+  const result = {
+    openai: openAiKeys,
+    bedrock: bedrockKeys,
+  };
+  
+  res.json(result);
+
 });
 
 server.use((err, req, res, next) => { // eslint-disable-line
@@ -25,6 +41,3 @@ server.use((err, req, res, next) => { // eslint-disable-line
 });
 
 export default server;
-
-
-

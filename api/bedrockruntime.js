@@ -1,7 +1,6 @@
 // Description: Bedrock Runtime API for invoking models.
 
 const { fileURLToPath } = require('url');
-// const { FoundationModels } = require('../../config/foundation_models.js');
 const { BedrockRuntimeClient, InvokeModelCommand } = require('@aws-sdk/client-bedrock-runtime');
 
 

@@ -1,33 +1,29 @@
 
-import {FoundationModels} from "../foundation_models.js";
-import { BedrockRuntimeClient, InvokeModelCommand } from "@aws-sdk/client-bedrock-runtime";
+import { BedrockModels } from "./model-identifiers.js";
+import { InvokeModelCommand } from "@aws-sdk/client-bedrock-runtime";
+import createBedrockClient from "./bedrock-runtime-client-factory.js";
 
 ////////////////////////////////////////////////////////////////////////////////////////
-const invokeModel = async (
+export const invokeModel = async (
     messages,
-    modelId = FoundationModels.MIXTRAL_8X7B.modelId
+    // default to Mixtral 8x7b model
+    modelId = BedrockModels.MIXTRAL_8X7B.modelId
 ) => {
 
     //////////////////////////////////////////////////////////////////////////
     // Create a new Bedrock Runtime client instance.
-    var runtimeClientParms = {
-        region: "us-west-2",
-        credentials: {
-            accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-            secretAccessKey: process.env.AWS_ACCESS_SECRET_KEY
-        }
-    }
-    const client = new BedrockRuntimeClient(runtimeClientParms);
+    // the default bedrock client uses us-west-2 region, and the access key and secret key 
+    // are set in the environment variables (you can alsos set them in .env)
+    // you can also pass the region and credentials in an object as a parameter to the function
+    const client = createBedrockClient();
   
 
-    //////////////////////////////////////////////////////////////////////////
     // Combine messages into a single string with tags for Mixtral.
     const formattedMessages = messages.map(message => {
         return `<${message.role}>${message.content}</${message.role}>`;
     }).join(' ');
 
 
-    //////////////////////////////////////////////////////////////////////////
     // Mistral instruct models provide optimal results when embedding
     // the prompt into the following template:
     const instruction = `<s>[INST] ${formattedMessages} [/INST]`;
@@ -40,7 +36,6 @@ const invokeModel = async (
     };
 
 
-    //////////////////////////////////////////////////////////////////////////
     // Invoke the model with the payload and wait for the response.
     const command = new InvokeModelCommand({
         contentType: "application/json",
@@ -52,10 +47,8 @@ const invokeModel = async (
 
     // Decode and return the response.
     const decodedResponseBody = new TextDecoder().decode(apiResponse.body);
-    /** @type {ResponseBody} */
     const responseBody = JSON.parse(decodedResponseBody);
 
     return responseBody.outputs[0].text;
 };
 
-export default invokeModel;

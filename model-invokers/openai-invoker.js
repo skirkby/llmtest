@@ -1,13 +1,13 @@
-import OpenAI from "openai";
-import { OpenAIModels } from "../foundation_models.js";
+import { OpenAIModels } from "./model-configs.js";
+import createOpenAIClient from "./openai-runtime-client-factory.js";
 
 ////////////////////////////////////////////////////////////////////////////////////////
-const invokeModel = async (
+export const invokeModel = async (
     messages,
     modelId = OpenAIModels.GPT_4O.modelId,
 ) => {
     // Create a new OpenAI client instance.
-    const openaiClient = new OpenAI(); // with your API key in the environment variable OPENAI_API_KEY
+    const openaiClient = createOpenAIClient();
 
     // Prepare the payload for the model.
     const payload = {
@@ -26,5 +26,5 @@ const invokeModel = async (
     return responses;
 };
 
-export default invokeModel;
+
 
