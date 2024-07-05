@@ -26,23 +26,62 @@ tl;dr
 
 ```json
 {
-    "openai": [
-        "GPT_4O",
-        "GPT_4",
-        "GPT_35_TURBO",
-        "GPT_35_TURBO_INSTRUCT",
-        "GPT_35_TURBO_16k"
-    ],
-    "bedrock": [
-        "CLAUDE_35_SONNET",
-        "CLAUDE_3_HAIKU",
-        "CLAUDE_3_SONNET",
-        "CLAUDE_2_1",
-        "CLAUDE_2",
-        "CLAUDE_INSTANT",
-        "MISTRAL_7B",
-        "MIXTRAL_8X7B"
-    ]
+    "bedrock": {
+        "claude-35-sonnet": {
+            "modelId": "anthropic.claude-3-5-sonnet-20240620-v1:0",
+            "modelName": "Anthropic Claude 3.5 Sonnet"
+        },
+        "claude-3-haiku": {
+            "modelId": "anthropic.claude-3-haiku-20240307-v1:0",
+            "modelName": "Anthropic Claude 3 Haiku"
+        },
+        "claude-3-sonnet": {
+            "modelId": "anthropic.claude-3-sonnet-20240229-v1:0",
+            "modelName": "Anthropic Claude 3 Sonnet"
+        },
+        "culade-2-1": {
+            "modelId": "anthropic.claude-v2:1",
+            "modelName": "Anthropic Claude 2.1"
+        },
+        "claude-2": {
+            "modelId": "anthropic.claude-v2",
+            "modelName": "Anthropic Claude 2.0"
+        },
+        "claude-instant": {
+            "modelId": "anthropic.claude-instant-v1",
+            "modelName": "Anthropic Claude Instant"
+        },
+        "mistral-7-b": {
+            "modelId": "mistral.mistral-7b-instruct-v0:2",
+            "modelName": "Mistral 7B Instruct"
+        },
+        "mixtral-8x7B": {
+            "modelId": "mistral.mixtral-8x7b-instruct-v0:1",
+            "modelName": "Mixtral 8X7B Instruct"
+        }
+    },
+    "openai": {
+        "gpt-4o": {
+            "modelId": "gpt-4o",
+            "modelName": "OpenAI GPT-4o"
+        },
+        "gpt-4": {
+            "modelId": "gpt-4",
+            "modelName": "OpenAI GPT-4"
+        },
+        "gpt-35-turbo": {
+            "modelId": "gpt-3.5-turbo",
+            "modelName": "OpenAI GPT-3.5 Turbo"
+        },
+        "gpt-35-turbo-instruct": {
+            "modelId": "gpt-3.5-turbo-instruct",
+            "modelName": "OpenAI GPT-3.5 Turbo Instruct"
+        },
+        "gpt-35-turbo-16k": {
+            "modelId": "gpt-3.5-turbo-16k",
+            "modelName": "OpenAI GPT-3.5 Turbo 16k"
+        }
+    }
 }
 
 ```
