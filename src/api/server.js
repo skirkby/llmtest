@@ -18,15 +18,8 @@ server.get("/", (req, res) => {
 });
 
 server.get("/list", (req, res) => {
-  const openAiKeys = Object.keys(OpenAIModels);
-  const bedrockKeys = Object.keys(BedrockModels);
-
-  const result = {
-    openai: openAiKeys,
-    bedrock: bedrockKeys,
-  };
   
-  res.json(result);
+  res.json(AllModels);
 
 });
 
