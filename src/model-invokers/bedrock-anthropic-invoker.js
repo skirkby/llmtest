@@ -1,12 +1,12 @@
 // TODO: refactor claud3-haiku-invoker.js to use shared id's
 // TODO: duplicate claude3 haiku invoker for other claude3 models
 
-import { BedrockModels } from "./model-configs.js";
+import { AllModels } from "./model-configs.js";
 import {
   InvokeModelCommand,
   InvokeModelWithResponseStreamCommand,
 } from "@aws-sdk/client-bedrock-runtime";
-import createBedrockClient from "./bedrock-runtime-client-factory.js";
+import createBedrockClient from "../client-factories/bedrock-runtime-client-factory.js";
 
 
 
@@ -24,7 +24,7 @@ export const invokeModel = async (
 
   messages,
   // default to Claude 3 Haiku model
-  modelId = "anthropic.claude-3-haiku-20240307-v1:0",
+  modelId = AllModels.bedrock.CLAUDE_3_HAIKU.modelId,
 ) => {
 
   // TODO: refactor to support multiple "content blocks" of different types, as allowed
@@ -75,7 +75,7 @@ export const invokeModel = async (
 //
 export const invokeModelWithResponseStream = async (
   messages,
-  modelId = BedrockModels.CLAUDE_3_HAIKU.modelId,
+  modelId = AllModels.bedrock.CLAUDE_3_HAIKU.modelId,
 ) => {
   // Create a new Bedrock Runtime client instance.
   const client = createBedrockClient();

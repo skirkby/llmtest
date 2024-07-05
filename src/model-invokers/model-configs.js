@@ -1,5 +1,6 @@
- // TODO: modify module properties of each model to point to the correct module file
- const BedrockModels = Object.freeze({
+
+const AllModels = Object.freeze({
+  bedrock: {
     CLAUDE_35_SONNET: {
       modelId: "anthropic.claude-3-5-sonnet-20240620-v1:0",
       modelName: "Anthropic Claude 3.5 Sonnet",
@@ -48,10 +49,8 @@
       module: () => import("./bedrock-mistral-invoker.js"),
       invoker: (/** @type {Module} */ module) => module.invokeModel,
     },
-  });
-
-
-const OpenAIModels = Object.freeze({
+  },
+  openai: {
     GPT_4O: {
       modelId: "gpt-4o",
       modelName: "OpenAI GPT-4o",
@@ -82,7 +81,8 @@ const OpenAIModels = Object.freeze({
       module: () => import("./openai-invoker.js"),
       invoker: (module) => module.invokeModel,
     }
-  });
+  }
+});
 
   // TODO: add support for these models.  Currently not supported in this app (July 2024)
 const BedrockAlternativeModels = Object.freeze({
@@ -124,4 +124,24 @@ const BedrockAlternativeModels = Object.freeze({
   },
 });
 
-  export {BedrockModels, OpenAIModels};
+
+///////////////////////////////////////////
+// Get the invoker for a model
+///////////////////////////////////////////
+const getInvoker = async (modelType, modelName) => {
+  const modelConfig = AllModels[modelType]?.[modelName];
+
+  if (!modelConfig) {    
+    return null;
+  }
+
+  const module = await modelConfig.module();
+  const invoker = modelConfig.invoker(module);
+
+  return async function(messages) {
+    return await invoker(messages, modelConfig.modelId);
+  }
+}
+
+
+  export {AllModels, getInvoker};

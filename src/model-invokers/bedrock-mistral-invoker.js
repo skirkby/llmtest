@@ -1,11 +1,11 @@
 
 
-import { BedrockModels } from "./model-configs.js";
+import { AllModels } from "./model-configs.js";
 import {
   InvokeModelCommand,
   InvokeModelWithResponseStreamCommand,
 } from "@aws-sdk/client-bedrock-runtime";
-import createBedrockClient from "./bedrock-runtime-client-factory.js";
+import createBedrockClient from "../client-factories/bedrock-runtime-client-factory.js";
 
 
 
@@ -18,7 +18,7 @@ export const invokeModel = async (
 
   messages,
   // default to Mixtral 8x7b model
-  modelId = BedrockModels.MIXTRAL_8X7B.modelId,
+  modelId = AllModels.bedrock.MIXTRAL_8X7B.modelId,
 ) => {
   // Create a new Bedrock Runtime client instance.
   // the default bedrock client uses the region, access key and secret key 

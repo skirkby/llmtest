@@ -1,10 +1,10 @@
-import { OpenAIModels } from "./model-configs.js";
-import createOpenAIClient from "./openai-runtime-client-factory.js";
+import { AllModels } from "./model-configs.js";
+import createOpenAIClient from "../client-factories/openai-runtime-client-factory.js";
 
 ////////////////////////////////////////////////////////////////////////////////////////
 export const invokeModel = async (
     messages,
-    modelId = OpenAIModels.GPT_4O.modelId,
+    modelId = AllModels.oopenai.GPT_4O.modelId,
 ) => {
     // Create a new OpenAI client instance.
     const openaiClient = createOpenAIClient();
