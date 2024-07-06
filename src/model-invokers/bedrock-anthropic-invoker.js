@@ -127,7 +127,7 @@ export const invokeModelWithResponseStream = async (
 // be text, image, or other types. The function processes "system" objects and
 // returns the remaining messages and the concatenated system prompt.
 // TODO: refactor to support multiple "content blocks" of different types, as allowed
-function parseMessages(messages) {
+export const parseMessages = (messages) => {
   let systemPrompt = "";
 
   // Iterate through the messages array and process "system" objects

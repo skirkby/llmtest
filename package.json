@@ -4,7 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "jasmine",
+    "test": "node run-tests.js",
     "serve": "node ./src/index.js",
     "start": "node ./src/index.js"
   },
@@ -21,6 +21,7 @@
     "openai": "^4.47.1"
   },
   "devDependencies": {
-    "jasmine": "^5.1.0"
+    "jasmine": "^5.1.0",
+    "jasmine-spec-reporter": "^7.0.0"
   }
 }

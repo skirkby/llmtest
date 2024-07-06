@@ -54,7 +54,7 @@ export const invokeModel = async (
 ///////////////////////////////////////////
 // create the turn-based conversation format for the model
 //
-function parseMessages(messages) {
+export const parseMessages = (messages) => {
   const formattedMessages = messages.map(message => {
     return `<${message.role}>${message.content}</${message.role}>`;
   }).join(' ');
