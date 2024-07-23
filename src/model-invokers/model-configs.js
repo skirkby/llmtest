@@ -49,6 +49,13 @@ const AllModels = Object.freeze({
       module: () => import("./bedrock-mistral-invoker.js"),
       invoker: (/** @type {Module} */ module) => module.invokeModel,
     },
+    "studio-copilot": {
+      modelId: "anthropic.claude-v2",
+      modelName: "Anthropic Claude 2.0",
+      module: () => import("./studio-copilot-v1-invoker.js"),
+      //module: () => import("./bedrock-anthropic-invoker.js"),
+      invoker: (/** @type {Module} */ module) => module.invokeModel,
+    },
   },
   "openai": {
     "gpt-4o": {
