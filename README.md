@@ -58,7 +58,11 @@ tl;dr
         "mixtral-8x7B": {
             "modelId": "mistral.mixtral-8x7b-instruct-v0:1",
             "modelName": "Mixtral 8X7B Instruct"
-        }
+        },
+        "script-structure": {
+            "modelId": "anthropic.claude-v2",
+            "modelName": "Anthropic Claude 2.0"
+        },
     },
     "openai": {
         "gpt-4o": {
